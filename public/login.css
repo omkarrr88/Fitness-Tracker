@@ -1,0 +1,78 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: Arial, sans-serif;
+    background-color: #1f1d32;
+    overflow: hidden;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    padding: 0 50px;
+}
+
+.logo-container {
+    width: 30%;
+    text-align: center;
+}
+
+.logo-container img {
+    max-width: 50%;
+    height: auto;
+}
+
+.login-container {
+    width: 400px;
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center; /* Center-align the text inside the login box */
+}
+
+.login-container h2 {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.login-container input[type="email"],
+.login-container input[type="password"],
+button {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box; /* Ensures padding doesn't affect width */
+}
+
+ button {
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #218838;
+}
+
+.login-container .links {
+    margin-top: 15px;
+    text-align: center;
+}
+
+.login-container .links a {
+    display: block;
+    color: #1f1d32;
+    text-decoration: none;
+    margin-top: 5px;
+}
+
+.login-container .links a:hover {
+    text-decoration: none;
+}
