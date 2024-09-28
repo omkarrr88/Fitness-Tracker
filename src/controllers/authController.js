@@ -110,3 +110,25 @@ exports.verifyOTP = async (req, res) => {
 
     res.json({ success: true, message: 'OTP verified' });
 };
+
+exports.resetPassword = async (req, res) => {
+    try {
+        console.log('Reset password API called'); // Debugging log
+        const { email, password } = req.body;
+        const user = await User.findOne({ email });
+        if (!user) {
+            console.log('User not found'); // Debugging log
+            return res.json({ success: false, message: 'Email not found' });
+        }
+
+        const hashedPassword = await bcrypt.hash(password, 10);
+        user.password = hashedPassword;
+        await user.save();
+
+        console.log('Password reset successful'); // Debugging log
+        res.json({ success: true, message: 'Password reset successful' });
+    } catch (error) {
+        console.error('Error resetting password:', error);
+        res.status(500).json({ success: false, message: 'Error resetting password' });
+    }
+};

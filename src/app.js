@@ -1,5 +1,7 @@
 const express = require('express');
+const bodyParser = require('body-parser');
 const app = express();
+const cors = require('cors');
 const connectDB = require('./config/db');
 const authRoutes = require('./routes/authRoutes');
 const path = require('path');
@@ -11,6 +13,9 @@ connectDB();
 // Middleware
 app.use(express.json());
 app.use(express.static(path.join(__dirname, '../public')));
+
+app.use(cors());
+app.use(bodyParser.json());
 
 // Routes
 app.use('/auth', authRoutes);
@@ -30,10 +35,6 @@ app.get('/forgotpassword', (req, res) => {
 
 app.get('/dashboard', (req, res) => {
     res.sendFile(path.join(__dirname, '../public', 'dashboard.html'));
-});
-
-app.get('/resetPassword', (req, res) => {
-    res.sendFile(path.join(__dirname, '../public', 'resetPassword.html'));
 });
 
 // Start the server
