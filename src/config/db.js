@@ -1,3 +1,4 @@
+// config/db.js
 const mongoose = require('mongoose');
 
 const connectDB = async () => {
@@ -8,8 +9,8 @@ const connectDB = async () => {
             useCreateIndex: true
         });
         console.log('MongoDB connected');
-    } catch (error) {
-        console.error('MongoDB connection error:', error);
+    } catch (err) {
+        console.error('MongoDB connection error:', err);
         process.exit(1);
     }
 };

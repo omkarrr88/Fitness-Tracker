@@ -4,22 +4,37 @@ const nodemailer = require('nodemailer');
 const crypto = require('crypto');
 
 exports.createAccount = async (req, res) => {
+    const {
+        name, gender, dob, email, phone, password, confirmPassword, age, heightCm, weight,
+        fitnessGoal, goalTime, dietType, mealsPerDay, waterIntake, activityLevel, regularActivity,
+        workoutType, workoutFrequency, sleepHours, sleepTime, sleepTrouble, healthCondition,
+        dailySteps, breakfastTime, lunchTime, dinnerTime, overallWellness, dailyFeeling
+    } = req.body;
+
     try {
-        const { name, gender, dob, email, phone, password } = req.body;
-        
+        // Check if passwords match
+        if (password !== confirmPassword) {
+            return res.status(400).json({ success: false, message: 'Passwords do not match' });
+        }
+
         // Check if user already exists
         const existingUser = await User.findOne({ email });
         if (existingUser) {
             return res.status(400).json({ success: false, message: 'Email already exists' });
         }
-        
-        // Hash the password
+
+        // Hash password
         const hashedPassword = await bcrypt.hash(password, 10);
-        
+
         // Create new user
-        const newUser = new User({ name, gender, dob, email, phone, password: hashedPassword });
+        const newUser = new User({
+            name, gender, dob, email, phone, password: hashedPassword, age, heightCm, weight,
+            fitnessGoal, goalTime, dietType, mealsPerDay, waterIntake, activityLevel, regularActivity,
+            workoutType, workoutFrequency, sleepHours, sleepTime, sleepTrouble, healthCondition,
+            dailySteps, breakfastTime, lunchTime, dinnerTime, overallWellness, dailyFeeling
+        });
+
         await newUser.save();
-        
         res.status(201).json({ success: true, message: 'Account created successfully' });
     } catch (error) {
         console.error('Error creating account:', error);
@@ -27,22 +42,43 @@ exports.createAccount = async (req, res) => {
     }
 };
 
+
+exports.submitForm = async (req, res) => {
+    try {
+        const { email, ...formData } = req.body;
+        const user = await User.findOne({ email });
+
+        if (!user) {
+            return res.status(404).json({ success: false, message: 'Email not found' });
+        }
+
+        // Save form data linked to the user
+        const newFormData = new FormData({ email, ...formData });
+        await newFormData.save();
+
+        res.status(201).json({ success: true, message: 'Form submitted successfully' });
+    } catch (error) {
+        console.error('Error submitting form:', error);
+        res.status(500).json({ success: false, message: 'Error submitting form' });
+    }
+};
+
 exports.login = async (req, res) => {
     try {
         const { email, password } = req.body;
-        
+
         // Check if user exists
         const user = await User.findOne({ email });
         if (!user) {
             return res.status(401).json({ success: false, message: 'Invalid email or password' });
         }
-        
+
         // Check if password is correct
         const isMatch = await bcrypt.compare(password, user.password);
         if (!isMatch) {
             return res.status(401).json({ success: false, message: 'Invalid email or password' });
         }
-        
+
         res.status(200).json({ success: true, message: 'Login successful' });
     } catch (error) {
         console.error('Error logging in:', error);
@@ -130,5 +166,19 @@ exports.resetPassword = async (req, res) => {
     } catch (error) {
         console.error('Error resetting password:', error);
         res.status(500).json({ success: false, message: 'Error resetting password' });
+    }
+};
+
+exports.checkEmail = async (req, res) => {
+    try {
+        const { email } = req.body;
+        const existingUser = await User.findOne({ email });
+        if (existingUser) {
+            return res.status(400).json({ success: false, message: 'Email already exists' });
+        }
+        res.status(200).json({ success: true, message: 'Email is available' });
+    } catch (error) {
+        console.error('Error checking email:', error);
+        res.status(500).json({ success: false, message: 'Error checking email' });
     }
 };

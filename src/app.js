@@ -1,11 +1,16 @@
+// server.js
 const express = require('express');
 const bodyParser = require('body-parser');
-const app = express();
+const mongoose = require('mongoose');
 const cors = require('cors');
-const connectDB = require('./config/db');
-const authRoutes = require('./routes/authRoutes');
 const path = require('path');
 require('dotenv').config();
+
+const connectDB = require('./config/db');
+const authRoutes = require('./routes/authRoutes');
+
+const app = express();
+const PORT = process.env.PORT || 3000;
 
 // Connect to MongoDB
 connectDB();
@@ -13,7 +18,6 @@ connectDB();
 // Middleware
 app.use(express.json());
 app.use(express.static(path.join(__dirname, '../public')));
-
 app.use(cors());
 app.use(bodyParser.json());
 
@@ -38,7 +42,6 @@ app.get('/dashboard', (req, res) => {
 });
 
 // Start the server
-const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
 });
