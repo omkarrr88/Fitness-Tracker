@@ -182,3 +182,18 @@ exports.checkEmail = async (req, res) => {
         res.status(500).json({ success: false, message: 'Error checking email' });
     }
 };
+
+exports.getUserProfile = async (req, res) => {
+    const userId = req.user.userId; // Assuming userId is stored in req.user
+
+    try {
+        const user = await User.findById(userId).select('-password'); // Exclude password
+        if (!user) {
+            return res.status(404).json({ success: false, message: 'User not found' });
+        }
+        res.json({ success: true, user });
+    } catch (error) {
+        console.error('Error fetching user profile:', error);
+        res.status(500).json({ success: false, message: 'Server error' });
+    }
+};

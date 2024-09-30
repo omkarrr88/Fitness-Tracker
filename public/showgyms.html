@@ -3,11 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
-    <link rel="stylesheet" href="dashboard.css">
+    <title>Nearby Gyms</title>
+    <link rel="stylesheet" href="showgyms.css">
 </head>
 <body>
-    <!-- Header Section -->
     <header class="header">
         <div class="logo">
             <h1>PluseFit</h1>
@@ -49,8 +48,13 @@
         </div>
     </header>
 
-    <!-- Other content of your dashboard -->
+    <h1>Nearby Gyms</h1>
+    <div id="map"></div>
 
-    <script src="dashboard.js"></script>
+    <script src="showgyms.js"></script>
+    <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCtpfhduDn4qTfDhRr1YNn9O8SJ-8U77Vk&libraries=places&callback=initMap">
+    </script>
+    <script src="showgyms.js"></script>
 </body>
 </html>

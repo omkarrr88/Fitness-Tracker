@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
-    <link rel="stylesheet" href="dashboard.css">
+    <title>View Profile</title>
+    <link rel="stylesheet" href="profile.css">
 </head>
 <body>
-    <!-- Header Section -->
+    <!-- Header Section (Empty space for you to add the header) -->
     <header class="header">
         <div class="logo">
             <h1>PluseFit</h1>
@@ -49,8 +49,22 @@
         </div>
     </header>
 
-    <!-- Other content of your dashboard -->
+    <div class="container">
+        <h1>Profile</h1>
+        <div id="profile-info">
+            <p><strong>Name:</strong> <span id="name"></span></p>
+            <p><strong>Gender:</strong> <span id="gender"></span></p>
+            <p><strong>Date of Birth:</strong> <span id="dob"></span></p>
+            <p><strong>Email:</strong> <span id="email"></span></p>
+            <p><strong>Phone Number:</strong> <span id="phone"></span></p>
+            <p><strong>Age:</strong> <span id="age"></span></p>
+            <p><strong>Height:</strong> <span id="height"></span></p>
+            <p><strong>Weight:</strong> <span id="weight"></span></p>
+        </div>
+        <button id="edit-profile">Edit Profile</button>
+        <button id="change-password">Change Password</button>
+    </div>
 
-    <script src="dashboard.js"></script>
+    <script src="profile.js"></script>
 </body>
 </html>

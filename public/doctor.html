@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
-    <link rel="stylesheet" href="dashboard.css">
+    <title>Connect to Doctors and Health Professionals</title>
+    <link rel="stylesheet" href="doctor.css">
 </head>
 <body>
-    <!-- Header Section -->
+    <!-- Include Header -->
     <header class="header">
         <div class="logo">
             <h1>PluseFit</h1>
@@ -49,8 +49,15 @@
         </div>
     </header>
 
-    <!-- Other content of your dashboard -->
+    <div class="container">
+        <h1>Connect to Doctors and Health Professionals</h1>
+        <input type="text" id="searchBar" placeholder="Search for doctors...">
+        <div id="doctorList">
+            <!-- Doctor profiles will be dynamically inserted here -->
+        </div>
+    </div>
 
-    <script src="dashboard.js"></script>
+    <script src="doctor.js"></script>
+    <script src="header.js"></script>
 </body>
 </html>
