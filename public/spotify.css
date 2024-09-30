@@ -1,0 +1,84 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #1f1d32;
+    padding: 20px;
+    color: #fff;
+}
+
+.logo h1 {
+    margin: 0;
+}
+
+.nav ul {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+.nav ul li {
+    position: relative;
+    margin: 0 15px;
+}
+
+.nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.nav ul li a:hover {
+    text-decoration: underline;
+}
+
+.profile-section {
+    position: relative;
+    margin-right: 40px;
+}
+
+.profile-icon {
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+}
+
+.hover-content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #333;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.profile-section:hover .hover-content,
+.hover-section:hover .hover-content {
+    display: block;
+}
+
+.hover-content p {
+    margin: 0;
+    padding: 5px 0;
+    color: #fff;
+    cursor: pointer;
+}
+
+.hover-content p:hover {
+    background-color: #444;
+}
+
+.spotify-container {
+    height: calc(100vh - 80px); /* Adjust height based on header height */
+    width: 100%;
+    overflow: hidden;
+}

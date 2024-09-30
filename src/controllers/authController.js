@@ -1,4 +1,6 @@
 const User = require('../models/User');
+const jwt = require('jsonwebtoken');
+const WaterIntake = require('../models/WaterIntake'); // Assuming you have a WaterIntake model
 const bcrypt = require('bcrypt');
 const nodemailer = require('nodemailer');
 const crypto = require('crypto');
@@ -11,29 +13,29 @@ exports.createAccount = async (req, res) => {
         dailySteps, breakfastTime, lunchTime, dinnerTime, overallWellness, dailyFeeling
     } = req.body;
 
+    // Check if passwords match
+    if (password !== confirmPassword) {
+        return res.status(400).json({ success: false, message: 'Passwords do not match' });
+    }
+
+    // Check if user already exists
+    const existingUser = await User.findOne({ email });
+    if (existingUser) {
+        return res.status(400).json({ success: false, message: 'Email already exists' });
+    }
+
+    // Hash password
+    const hashedPassword = await bcrypt.hash(password, 10);
+
+    // Create new user
+    const newUser = new User({
+        name, gender, dob, email, phone, password: hashedPassword, age, heightCm, weight,
+        fitnessGoal, goalTime, dietType, mealsPerDay, waterIntake, activityLevel, regularActivity,
+        workoutType, workoutFrequency, sleepHours, sleepTime, sleepTrouble, healthCondition,
+        dailySteps, breakfastTime, lunchTime, dinnerTime, overallWellness, dailyFeeling
+    });
+
     try {
-        // Check if passwords match
-        if (password !== confirmPassword) {
-            return res.status(400).json({ success: false, message: 'Passwords do not match' });
-        }
-
-        // Check if user already exists
-        const existingUser = await User.findOne({ email });
-        if (existingUser) {
-            return res.status(400).json({ success: false, message: 'Email already exists' });
-        }
-
-        // Hash password
-        const hashedPassword = await bcrypt.hash(password, 10);
-
-        // Create new user
-        const newUser = new User({
-            name, gender, dob, email, phone, password: hashedPassword, age, heightCm, weight,
-            fitnessGoal, goalTime, dietType, mealsPerDay, waterIntake, activityLevel, regularActivity,
-            workoutType, workoutFrequency, sleepHours, sleepTime, sleepTrouble, healthCondition,
-            dailySteps, breakfastTime, lunchTime, dinnerTime, overallWellness, dailyFeeling
-        });
-
         await newUser.save();
         res.status(201).json({ success: true, message: 'Account created successfully' });
     } catch (error) {
@@ -42,6 +44,27 @@ exports.createAccount = async (req, res) => {
     }
 };
 
+exports.login = async (req, res) => {
+    const { email, password } = req.body;
+
+    try {
+        const user = await User.findOne({ email });
+        if (!user) {
+            return res.status(400).json({ success: false, message: 'Invalid email or password' });
+        }
+
+        const isMatch = await bcrypt.compare(password, user.password);
+        if (!isMatch) {
+            return res.status(400).json({ success: false, message: 'Invalid email or password' });
+        }
+
+        const token = jwt.sign({ userId: user.id }, process.env.JWT_SECRET, { expiresIn: '1h' });
+        res.json({ success: true, token });
+    } catch (error) {
+        console.error('Error logging in:', error);
+        res.status(500).json({ success: false, message: 'Server error' });
+    }
+};
 
 exports.submitForm = async (req, res) => {
     try {
@@ -63,34 +86,11 @@ exports.submitForm = async (req, res) => {
     }
 };
 
-exports.login = async (req, res) => {
-    try {
-        const { email, password } = req.body;
-
-        // Check if user exists
-        const user = await User.findOne({ email });
-        if (!user) {
-            return res.status(401).json({ success: false, message: 'Invalid email or password' });
-        }
-
-        // Check if password is correct
-        const isMatch = await bcrypt.compare(password, user.password);
-        if (!isMatch) {
-            return res.status(401).json({ success: false, message: 'Invalid email or password' });
-        }
-
-        res.status(200).json({ success: true, message: 'Login successful' });
-    } catch (error) {
-        console.error('Error logging in:', error);
-        res.status(500).json({ success: false, message: 'Error logging in' });
-    }
-};
-
 const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-        user: 'devilomkar88@gmail.com',
-        pass: 'kcpv hhvr idkx nwxh'
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASS
     }
 });
 
@@ -107,7 +107,7 @@ exports.sendOTP = async (req, res) => {
     await user.save();
     
     const mailOptions = {
-        from: 'devilomkar88@gmail.com',
+        from: process.env.EMAIL_USER,
         to: email,
         subject: 'Your OTP Code',
         text: `Dear User,

@@ -87,7 +87,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const response = await fetch('/auth/create-account', {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${localStorage.getItem('token')}` // Send the token
             },
             body: JSON.stringify(data)
         });

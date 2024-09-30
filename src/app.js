@@ -1,13 +1,12 @@
-// server.js
+require('dotenv').config();
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const path = require('path');
-require('dotenv').config();
-
 const connectDB = require('./config/db');
 const authRoutes = require('./routes/authRoutes');
+const waterIntakeRoutes = require('./routes/waterIntakeRoutes');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -23,6 +22,7 @@ app.use(bodyParser.json());
 
 // Routes
 app.use('/auth', authRoutes);
+app.use('/api', waterIntakeRoutes);
 
 // Serve HTML files
 app.get('/', (req, res) => {

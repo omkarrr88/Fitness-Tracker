@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI Calculator | PluseFit</title>
+    <link rel="stylesheet" href="bmi.css">
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="header">
+        <div class="logo">
+            <h1>PluseFit</h1>
+        </div>
+        <nav class="nav">
+            <ul>
+                <li><a href="#home">Calorie Tracking</a></li>
+                <li><a href="#features">Workout Tracking</a></li>
+                <li><a href="#about">Sleep Tracking</a></li>
+                <li class="hover-section">
+                    <a href="#contact">Yoga and Fitness Videos</a>
+                    <div class="hover-content">
+                        <p>Yoga Videos</p>
+                        <p>Fitness Videos</p>
+                    </div>
+                </li>
+                <li><a href="#about">Diet Plans</a></li>
+                <li><a href="#about">Workout Plans</a></li>
+                <li class="hover-section">
+                    <a href="#about">Health Hub</a>
+                    <div class="hover-content">
+                        <p><a href="spotify.html">Listen Music</a></p>
+                        <p><a href=water.html>Water Intake</a></p>
+                        <p><a href="bmi.html">BMI Calculator</a></p>
+                        <p>Show Nearby Gyms</p>
+                        <p>Connect to Doctors and Health Professionals</p>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+        <div class="profile-section">
+            <img src="download (1).jpeg" alt="Profile Icon" class="profile-icon">
+            <div class="hover-content">
+                <p>View Profile</p>
+                <p>Edit Profile</p>
+                <p><a href="forgotPassword.html">Change Password</a></p>
+                <p><a href="login.html">Logout</a></p>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container">
+        <h1>BMI Calculator</h1>
+        <form id="bmi-form">
+            <label for="height">Height (cm):</label>
+            <input type="number" id="height" name="height" required>
+            <label for="weight">Weight (kg):</label>
+            <input type="number" id="weight" name="weight" required>
+            <button type="button" onclick="calculateBMI()">Calculate BMI</button>
+            <button type="button" onclick="resetBMI()">Reset</button>
+        </form>
+        <div id="result" class="result">
+            <p id="bmi-value"></p>
+            <p id="bmi-condition"></p>
+        </div>
+    </div>
+
+    <script src="bmi.js"></script>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Water Intake Tracker</title>
+    <link rel="stylesheet" href="water.css">
+</head>
+<body>
+    <header class="header">
+        <div class="logo">
+            <h1>PluseFit</h1>
+        </div>
+        <nav class="nav">
+            <ul>
+                <li><a href="#home">Calorie Tracking</a></li>
+                <li><a href="#features">Workout Tracking</a></li>
+                <li><a href="#about">Sleep Tracking</a></li>
+                <li class="hover-section">
+                    <a href="#contact">Yoga and Fitness Videos</a>
+                    <div class="hover-content">
+                        <p>Yoga Videos</p>
+                        <p>Fitness Videos</p>
+                    </div>
+                </li>
+                <li><a href="#about">Diet Plans</a></li>
+                <li><a href="#about">Workout Plans</a></li>
+                <li class="hover-section">
+                    <a href="#about">Health Hub</a>
+                    <div class="hover-content">
+                        <p><a href="spotify.html">Listen Music</a></p>
+                        <p><a href=water.html>Water Intake</a></p>
+                        <p><a href="bmi.html">BMI Calculator</a></p>
+                        <p>Show Nearby Gyms</p>
+                        <p>Connect to Doctors and Health Professionals</p>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+        <div class="profile-section">
+            <img src="download (1).jpeg" alt="Profile Icon" class="profile-icon">
+            <div class="hover-content">
+                <p>View Profile</p>
+                <p>Edit Profile</p>
+                <p><a href="forgotPassword.html">Change Password</a></p>
+                <p><a href="login.html">Logout</a></p>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <h1>Water Intake Tracker</h1>
+        <div class="glass-container">
+            <div class="glass">
+                <div class="water" id="water"></div>
+            </div>
+        </div>
+        <div class="intake-options">
+            <button onclick="addWater(250)">250 ml</button>
+            <button onclick="addWater(500)">500 ml</button>
+            <button onclick="addWater(1000)">1000 ml</button>
+        </div>
+        <div class="milestone">
+            <p>Daily Milestone: 3000 ml</p>
+            <p>Water Drunk Today: <span id="waterDrunk">0</span> ml</p>
+        </div>
+        <canvas id="waterChart"></canvas>
+    </div>
+
+    <script src="water.js"></script>
+</body>
+</html>

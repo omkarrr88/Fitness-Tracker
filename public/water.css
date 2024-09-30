@@ -1,0 +1,129 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #1f1d32;
+    padding: 20px;
+    color: #fff;
+}
+
+.logo h1 {
+    margin: 0;
+}
+
+.nav ul {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+.nav ul li {
+    position: relative;
+    margin: 0 15px;
+}
+
+.nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.nav ul li a:hover {
+    text-decoration: underline;
+}
+
+.profile-section {
+    position: relative;
+    margin-right: 40px;
+}
+
+.profile-icon {
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+}
+
+.hover-content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #333;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.profile-section:hover .hover-content,
+.hover-section:hover .hover-content {
+    display: block;
+}
+
+.hover-content p {
+    margin: 0;
+    padding: 5px 0;
+    color: #fff;
+    cursor: pointer;
+}
+
+.hover-content p:hover {
+    background-color: #444;
+}
+
+.container {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.glass-container {
+    position: relative;
+    width: 100px;
+    height: 200px;
+    margin: 20px auto;
+    border: 2px solid #000;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.glass {
+    width: 100%;
+    height: 100%;
+    background-color: #e0e0e0;
+    position: relative;
+}
+
+.water {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background-color: #00f;
+    transition: height 0.5s;
+}
+
+.intake-options button {
+    margin: 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.milestone {
+    margin: 20px 0;
+}
+
+canvas {
+    margin-top: 20px;
+}
