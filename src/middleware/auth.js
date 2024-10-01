@@ -1,5 +1,5 @@
-// src/middleware/auth.js
 const jwt = require('jsonwebtoken');
+require('dotenv').config(); // Load environment variables from .env file
 
 module.exports = (req, res, next) => {
     const token = req.header('Authorization').replace('Bearer ', '');

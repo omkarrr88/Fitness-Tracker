@@ -1,6 +1,5 @@
 document.getElementById('send-otp').addEventListener('click', function() {
     const email = document.getElementById('email').value;
-
     fetch('/auth/send-otp', {
         method: 'POST',
         headers: {

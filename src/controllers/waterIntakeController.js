@@ -32,4 +32,3 @@ exports.getWaterIntake = async (req, res) => {
         res.status(500).json({ success: false, message: 'Error retrieving water intake data' });
     }
 };
-

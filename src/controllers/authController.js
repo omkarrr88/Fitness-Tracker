@@ -4,6 +4,24 @@ const WaterIntake = require('../models/WaterIntake'); // Assuming you have a Wat
 const bcrypt = require('bcrypt');
 const nodemailer = require('nodemailer');
 const crypto = require('crypto');
+require('dotenv').config();
+
+// Function to generate a token
+function generateToken(user) {
+    const token = jwt.sign({ userId: user.id }, process.env.JWT_SECRET, { expiresIn: '1h' });
+    return token;
+}
+
+// Function to verify a token
+function verifyToken(token) {
+    try {
+        const decoded = jwt.verify(token, process.env.JWT_SECRET);
+        return decoded;
+    } catch (error) {
+        console.error('Invalid token:', error);
+        return null;
+    }
+}
 
 exports.createAccount = async (req, res) => {
     const {
@@ -66,6 +84,16 @@ exports.login = async (req, res) => {
     }
 };
 
+exports.authMiddleware = (req, res, next) => {
+    const token = req.header('Authorization').replace('Bearer ', '');
+    const decoded = verifyToken(token);
+    if (!decoded) {
+        return res.status(401).json({ success: false, message: 'Unauthorized' });
+    }
+    req.user = decoded;
+    next();
+};
+
 exports.submitForm = async (req, res) => {
     try {
         const { email, ...formData } = req.body;
@@ -97,7 +125,6 @@ const transporter = nodemailer.createTransport({
 exports.sendOTP = async (req, res) => {
     const { email } = req.body;
     const user = await User.findOne({ email });
-
     if (!user) {
         return res.json({ success: false, message: 'Email not found' });
     }
@@ -111,13 +138,10 @@ exports.sendOTP = async (req, res) => {
         to: email,
         subject: 'Your OTP Code',
         text: `Dear User,
-
 To complete your authentication process, please use the following One-Time Password (OTP). This code is valid for 10 minutes.
-
 Your OTP: ${otp}
 
 For your security, do not share this OTP with anyone. If you did not request this, please ignore this email.
-
 Thank you for using our services.
 
 Best regards,

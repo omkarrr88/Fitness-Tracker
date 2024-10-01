@@ -11,5 +11,8 @@ router.post('/reset-password', authController.resetPassword);
 router.post('/submit-form', authController.submitForm);
 router.post('/check-email', authController.checkEmail);
 router.get('/profile', auth, authController.getUserProfile); // Use the auth middleware
+router.get('/protected-route', auth, (req, res) => {
+    res.json({ success: true, message: 'You have access to this protected route' });
+});
 
 module.exports = router;
