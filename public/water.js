@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
         .catch(error => {
             console.error('Error saving water intake:', error);
         });
-    }
+    }    
 
     function loadWaterIntakeChart() {
         const token = localStorage.getItem('token');
@@ -79,14 +79,14 @@ document.addEventListener('DOMContentLoaded', () => {
     resetWaterIntakeDaily();
     updateWaterLevel(); // Update the water level on page load
     loadWaterIntakeChart(); // Load the chart on page load
-});
 
-window.addWater = function(amount) {
-    waterDrunk += amount;
-    if (waterDrunk > dailyMilestone) {
-        waterDrunk = dailyMilestone;
-    }
-    updateWaterLevel();
-    saveWaterIntake(waterDrunk);
-    localStorage.setItem('waterDrunk', waterDrunk); // Save to local storage
-};
+    window.addWater = function(amount) {
+        waterDrunk += amount;
+        if (waterDrunk > dailyMilestone) {
+            waterDrunk = dailyMilestone;
+        }
+        updateWaterLevel();
+        saveWaterIntake(waterDrunk);
+        localStorage.setItem('waterDrunk', waterDrunk); // Save to local storage
+    };
+});
