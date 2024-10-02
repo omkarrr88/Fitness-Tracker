@@ -32,7 +32,7 @@ app.use('/api', profileRoutes); // Ensure this line is correct
 
 // Serve HTML files
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, '../public', 'login.html'));
+    res.sendFile(path.join(__dirname, '../public', 'main.html'));
 });
 
 app.get('/account', (req, res) => {
