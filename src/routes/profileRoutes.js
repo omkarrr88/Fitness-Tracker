@@ -2,8 +2,9 @@ const express = require('express');
 const router = express.Router();
 const auth = require('../middleware/auth'); // Ensure this path is correct
 const User = require('../models/User');
+const authController = require('../controllers/authController');
 
-router.get('/profile', auth, async (req, res) => {
+router.get('/profile', auth.authenticate, async (req, res) => {
     try {
         const user = await User.findById(req.user.userId).select('-password -otp'); // Exclude password and OTP fields
         if (!user) {
@@ -15,5 +16,7 @@ router.get('/profile', auth, async (req, res) => {
         res.status(500).json({ success: false, message: 'Server error' });
     }
 });
+
+router.put('/profile', auth.authenticate, authController.updateProfile);
 
 module.exports = router;

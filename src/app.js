@@ -7,7 +7,7 @@ require('dotenv').config();
 const connectDB = require('./config/db');
 const authRoutes = require('./routes/authRoutes');
 const waterIntakeRoutes = require('./routes/waterIntakeRoutes');
-const profileRoutes = require('./routes/profileRoutes'); // Add this line
+const profileRoutes = require('./routes/profileRoutes'); // Ensure this line is correct
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -17,14 +17,16 @@ connectDB();
 
 // Middleware
 app.use(express.json());
-app.use(express.static(path.join(__dirname, '../public')));
+app.use('/auth', authRoutes);
+app.use('/api/user', profileRoutes); // Ensure this line is correct
 app.use(cors());
 app.use(bodyParser.json());
+app.use(express.static(path.join(__dirname, '../public')));
 
 // Routes
 app.use('/auth', authRoutes);
 app.use('/api', waterIntakeRoutes);
-app.use('/api', profileRoutes); // Add this line
+app.use('/api', profileRoutes); // Ensure this line is correct
 
 // Serve HTML files
 app.get('/', (req, res) => {

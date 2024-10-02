@@ -78,52 +78,69 @@ body {
     background-color: #444;
 }
 
-.container {
-    max-width: 600px;
-    margin: 20px auto;
-    padding: 20px;
-    background-color: #E0E1DD;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    text-align: center;
+main {
+    padding: 1rem;
 }
 
-.glass-container {
-    position: relative;
-    width: 100px;
-    height: 200px;
-    margin: 20px auto;
-    border: 2px solid #000;
-    border-radius: 10px;
-    overflow: hidden;
+.workout-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: space-between;
 }
 
-.glass {
-    width: 100%;
-    height: 100%;
-    background-color: #e0e0e0;
-    position: relative;
+.workout-item {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 1rem;
+    width: calc(33.333% - 3.5rem);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.water {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    background-color: #00f;
-    transition: height 0.5s;
+.workout-item h2 {
+    margin-top: 0;
 }
 
-.intake-options button {
-    margin: 10px;
-    padding: 10px 20px;
-    font-size: 16px;
+.workout-item button {
+    display: inline-block;
+    margin-top: 0.5rem;
+    padding: 0.5rem 1rem;
+    color: #fff;
+    background-color: #007BFF;
+    border: none;
+    border-radius: 5px;
     cursor: pointer;
 }
 
-.milestone {
-    margin: 20px 0;
+.workout-item button:hover {
+    background-color: #0056b3;
 }
 
-canvas {
-    margin-top: 20px;
+.workout-details {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 1rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
+
+.workout-details h2 {
+    margin-top: 0;
+}
+
+.workout-details button {
+    display: inline-block;
+    margin-top: 0.5rem;
+    padding: 0.5rem 1rem;
+    color: #fff;
+    background-color: #007BFF;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.workout-details button:hover {
+    background-color: #0056b3;
+}
+

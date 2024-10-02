@@ -6,14 +6,9 @@ exports.saveWaterIntake = async (req, res) => {
     const date = new Date().toISOString().split('T')[0]; // Get current date in YYYY-MM-DD format
 
     try {
-        let waterIntake = await WaterIntake.findOne({ userId, date });
-        if (waterIntake) {
-            waterIntake.amount += amount;
-        } else {
-            waterIntake = new WaterIntake({ userId, date, amount });
-        }
-        await waterIntake.save();
-        res.json({ success: true, waterIntake });
+        const newWaterIntake = new WaterIntake({ userId, date, amount });
+        await newWaterIntake.save();
+        res.status(201).json({ success: true, message: 'Water intake saved successfully' });
     } catch (error) {
         console.error('Error saving water intake:', error);
         res.status(500).json({ success: false, message: 'Error saving water intake' });

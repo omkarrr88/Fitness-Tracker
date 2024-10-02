@@ -1,6 +1,5 @@
 const User = require('../models/User');
 const jwt = require('jsonwebtoken');
-const WaterIntake = require('../models/WaterIntake'); // Assuming you have a WaterIntake model
 const bcrypt = require('bcrypt');
 const nodemailer = require('nodemailer');
 const crypto = require('crypto');
@@ -218,6 +217,23 @@ exports.getUserProfile = async (req, res) => {
         res.json({ success: true, user });
     } catch (error) {
         console.error('Error fetching user profile:', error);
+        res.status(500).json({ success: false, message: 'Server error' });
+    }
+};
+
+exports.updateProfile = async (req, res) => {
+    try {
+        const userId = req.user.userId;
+        const updateData = req.body;
+
+        const user = await User.findByIdAndUpdate(userId, updateData, { new: true }).select('-password -otp');
+        if (!user) {
+            return res.status(404).json({ success: false, message: 'User not found' });
+        }
+
+        res.json({ success: true, user });
+    } catch (error) {
+        console.error('Error updating profile:', error);
         res.status(500).json({ success: false, message: 'Server error' });
     }
 };
