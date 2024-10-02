@@ -70,3 +70,6 @@ function createMarker(place) {
         infowindow.open(map, marker);
     });
 }
+
+// Initialize the map when the window loads
+window.onload = initMap;

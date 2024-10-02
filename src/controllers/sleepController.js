@@ -5,6 +5,12 @@ exports.saveSleepData = async (req, res) => {
     const userId = req.user.userId; // Ensure userId is taken from authenticated user
 
     try {
+        // Check if sleep data for the same date already exists
+        const existingSleepData = await Sleep.findOne({ userId, sleepDate });
+        if (existingSleepData) {
+            return res.status(400).json({ success: false, message: 'Sleep data for this date already exists.' });
+        }
+
         const sleepData = new Sleep({ userId, sleepDate, sleepTime, wakeTime, sleepDuration });
         await sleepData.save();
         res.status(201).json({ success: true, message: 'Sleep data saved successfully' });
