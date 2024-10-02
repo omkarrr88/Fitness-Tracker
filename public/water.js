@@ -4,6 +4,16 @@ document.addEventListener('DOMContentLoaded', () => {
     let waterDrunk = localStorage.getItem('waterDrunk') ? parseInt(localStorage.getItem('waterDrunk')) : 0;
     const dailyMilestone = 3000;
 
+    function resetWaterIntakeDaily() {
+        const lastReset = localStorage.getItem('lastReset');
+        const today = new Date().toISOString().split('T')[0];
+        if (lastReset !== today) {
+            waterDrunk = 0;
+            localStorage.setItem('waterDrunk', waterDrunk);
+            localStorage.setItem('lastReset', today);
+        }
+    }
+
     function updateWaterLevel() {
         const percentage = (waterDrunk / dailyMilestone) * 100;
         waterElement.style.height = `${percentage}%`;
@@ -23,16 +33,16 @@ document.addEventListener('DOMContentLoaded', () => {
         .then(response => response.json())
         .then(data => {
             console.log('Water intake saved:', data);
-            loadWaterIntakeChart();
+            loadWaterIntakeChart('7'); // Default to past 7 days
         })
         .catch(error => {
             console.error('Error saving water intake:', error);
         });
-    }    
+    }
 
-    function loadWaterIntakeChart() {
+    function loadWaterIntakeChart(days) {
         const token = localStorage.getItem('token');
-        fetch('/api/water-intake', {
+        fetch(`/api/water-intake?days=${days}`, {
             headers: {
                 'Authorization': `Bearer ${token}`
             }
@@ -66,27 +76,14 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    function resetWaterIntakeDaily() {
-        const lastReset = localStorage.getItem('lastReset');
-        const today = new Date().toISOString().split('T')[0];
-        if (lastReset !== today) {
-            waterDrunk = 0;
-            localStorage.setItem('waterDrunk', waterDrunk);
-            localStorage.setItem('lastReset', today);
-        }
-    }
-
-    resetWaterIntakeDaily();
-    updateWaterLevel(); // Update the water level on page load
-    loadWaterIntakeChart(); // Load the chart on page load
-
     window.addWater = function(amount) {
         waterDrunk += amount;
-        if (waterDrunk > dailyMilestone) {
-            waterDrunk = dailyMilestone;
-        }
         updateWaterLevel();
         saveWaterIntake(waterDrunk);
         localStorage.setItem('waterDrunk', waterDrunk); // Save to local storage
     };
+
+    resetWaterIntakeDaily();
+    updateWaterLevel(); // Update the water level on page load
+    loadWaterIntakeChart('7'); // Load the chart on page load with default 7 days
 });

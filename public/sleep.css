@@ -1,10 +1,21 @@
+/* General Styles */
 body {
     font-family: Arial, sans-serif;
+    background-color: #1f1d32;
     margin: 0;
     padding: 0;
-    background-color: #1f1d32;
 }
 
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #E0E1DD;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+/* Header Styles */
 .header {
     display: flex;
     justify-content: space-between;
@@ -78,50 +89,41 @@ body {
     background-color: #444;
 }
 
-.container {
-    max-width: 600px;
-    margin: 20px auto;
-    padding: 20px;
-    background-color: #E0E1DD;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+/* Sleep Tracker Styles */
+h1 {
     text-align: center;
+    margin-bottom: 20px;
 }
 
-.glass-container {
-    position: relative;
-    width: 100px;
-    height: 200px;
-    margin: 20px auto;
-    border: 2px solid #000;
-    border-radius: 10px;
-    overflow: hidden;
+.sleep-input {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
 }
 
-.glass {
-    width: 100%;
-    height: 100%;
-    background-color: #e0e0e0;
-    position: relative;
+.sleep-input label {
+    font-weight: bold;
 }
 
-.water {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    background-color: #00f;
-    transition: height 0.5s;
+.sleep-input input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
 }
 
-.intake-options button {
-    margin: 10px;
-    padding: 10px 20px;
-    font-size: 16px;
+.sleep-input button {
+    padding: 10px;
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
     cursor: pointer;
+    font-size: 16px;
 }
 
-.milestone {
-    margin: 20px 0;
+.sleep-input button:hover {
+    background-color: #218838;
 }
 
 .graph-options {

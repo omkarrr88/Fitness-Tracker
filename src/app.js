@@ -8,6 +8,7 @@ const connectDB = require('./config/db');
 const authRoutes = require('./routes/authRoutes');
 const waterIntakeRoutes = require('./routes/waterIntakeRoutes');
 const profileRoutes = require('./routes/profileRoutes'); // Ensure this line is correct
+const sleepRoutes = require('./routes/sleepRoutes');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -26,6 +27,7 @@ app.use(express.static(path.join(__dirname, '../public')));
 // Routes
 app.use('/auth', authRoutes);
 app.use('/api', waterIntakeRoutes);
+app.use('/api', sleepRoutes);
 app.use('/api', profileRoutes); // Ensure this line is correct
 
 // Serve HTML files

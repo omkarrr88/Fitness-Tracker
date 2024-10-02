@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Water Intake Tracker</title>
     <link rel="stylesheet" href="water.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
     <header class="header">
@@ -63,6 +64,11 @@
         <div class="milestone">
             <p>Daily Milestone: 3000 ml</p>
             <p>Water Drunk Today: <span id="waterDrunk">0</span> ml</p>
+        </div>
+        <div class="graph-options">
+            <button onclick="loadWaterIntakeChart('7')">Past 7 Days</button>
+            <button onclick="loadWaterIntakeChart('30')">Past 30 Days</button>
+            <button onclick="loadWaterIntakeChart('365')">Past Year</button>
         </div>
         <canvas id="waterChart"></canvas>
     </div>    
