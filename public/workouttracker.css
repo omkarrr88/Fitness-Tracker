@@ -1,0 +1,263 @@
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to bottom, #1f1d32, #030328);
+    margin: 0;
+    padding: 0;
+}
+
+.main-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Header Styles */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: radial-gradient(circle, #1f1d32, #030328);
+    padding: 20px;
+    color: #fff;
+}
+
+.logo h1 {
+    margin: 0;
+}
+
+.nav ul {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+.nav ul li {
+    position: relative;
+    margin: 0 15px;
+}
+
+.nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.nav ul li a:hover {
+    text-decoration: underline;
+}
+
+.profile-section {
+    position: relative;
+    margin-right: 40px;
+}
+
+.profile-icon {
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+}
+
+.hover-content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #333;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.profile-section:hover .hover-content,
+.hover-section:hover .hover-content {
+    display: block;
+}
+
+.hover-content p {
+    margin: 0;
+    padding: 5px 0;
+    color: #fff;
+    cursor: pointer;
+}
+
+.hover-content p:hover {
+    background-color: #444;
+}
+
+.console-box {
+    background-color: #E0E1DD;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    margin-bottom: 20px;
+    padding: 20px;
+}
+
+.header1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.title {
+    font-size: 2em;
+    margin: 0;
+}
+
+.subtitle {
+    font-size: 1.2em;
+    color: #666;
+}
+
+.exercise-section {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.input-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.input-container label {
+    font-weight: bold;
+}
+
+.input-container input,select {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.log-btn {
+    padding: 10px;
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+.log-btn:hover {
+    background-color: #218838;
+}
+
+.log-section {
+    margin-top: 20px;
+}
+
+.log-title {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+.log-container {
+    max-height: 200px;
+    overflow-y: auto;
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.workout-entry {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    position: relative;
+}
+
+.delete-btn {
+    background-color: #ff4d4d;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    display: none; /* Initially hidden */
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.workout-entry:hover .delete-btn {
+    display: block; /* Show on hover */
+}
+
+.delete-btn:hover {
+    background-color: #ff1a1a;
+}
+
+
+
+footer{
+    background-color: #030328;
+}
+.footerContainer{
+    width: 100%;
+    padding: 20px 0px 0px ;
+}
+.socialIcons{
+    display: flex;
+    justify-content: center;
+}
+.socialIcons a{
+    text-decoration: none;
+    padding:  10px;
+    background-color: white;
+    margin: 10px;
+    border-radius: 50%;
+}
+.socialIcons a i{
+    font-size: 1.3em;
+    color: black;
+    opacity: 0,9;
+}
+/* Hover affect on social media icon */
+.socialIcons a:hover{
+    background-color: #111;
+    transition: 0.5s;
+}
+.socialIcons a:hover i{
+    color: white;
+    transition: 0.5s;
+}
+.footerNav{
+    margin: 10px 0;
+}
+.footerNav ul{
+    display: flex;
+    justify-content: center;
+    list-style-type: none;
+}
+.footerNav ul li a{
+    color:white;
+    margin: 20px;
+    text-decoration: none;
+    font-size: 1em;
+    opacity: 0.7;
+    transition: 0.5s;
+
+}
+.footerNav ul li a:hover{
+    opacity: 1;
+}
+.footerBottom{
+    background-color: #030328;
+    padding: 10px;
+    text-align: center;
+}
+.footerBottom p{
+    color: white;
+}
+.designer{
+    opacity: 0.7;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 400;
+    margin: 0px 5px;
+}

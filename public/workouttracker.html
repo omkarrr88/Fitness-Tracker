@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Workout Tracker | PulseFit</title>
+  <link rel="stylesheet" href="workouttracker.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+  <header class="header">
+    <div class="logo">
+        <h1>PulseFit</h1>
+    </div>
+    <nav class="nav">
+        <ul>
+            <li><a href="#home">Calorie Tracking</a></li>
+            <li><a href="workouttracker.html">Workout Tracking</a></li>
+            <li><a href="sleep.html">Sleep Tracking</a></li>
+            <li class="hover-section">
+                <a href="#contact">Yoga and Fitness Videos</a>
+                <div class="hover-content">
+                    <p><a href="yoga.html">Yoga Videos</a></p>
+                    <p><a href="fitness.html">Fitness Videos</a></p>
+                </div>
+            </li>
+            <li><a href="diet.html">Diet Plans</a></li>
+            <li><a href="workout.html">Workout Plans</a></li>
+            <li class="hover-section">
+                <a href="#about">Health Hub</a>
+                <div class="hover-content">
+                    <p><a href="spotify.html">Listen Music</a></p>
+                    <p><a href="water.html">Water Intake</a></p>
+                    <p><a href="bmi.html">BMI Calculator</a></p>
+                    <p><a href="showgyms.html">Nearby Gyms</a></p>
+                    <p><a href="doctor.html">Connect to Doctors and Health Professionals</a></p>
+                </div>
+            </li>
+        </ul>
+    </nav>
+    <div class="profile-section">
+        <img src="user-01.png" alt="Profile Icon" class="profile-icon">
+        <div class="hover-content">
+            <p><a href="profile.html">View Profile</a></p>
+            <p><a href="editprofile.html">Edit Profile</a></p>
+            <p><a href="forgotPassword.html">Change Password</a></p>
+            <p><a href="login.html">Logout</a></p>
+        </div>
+    </div>
+  </header>
+
+  <div class="main-container">
+    <div class="console-box">
+      <div class="container">
+        <div class="header1">
+          <h1 class="title">Workout Tracker</h1>
+          <p class="subtitle">Track your progress for an accurate log!</p>
+        </div>
+
+        <div class="exercise-section">
+          <div class="input-container">
+            <label for="workout-date">Select Date:</label>
+            <input type="date" id="workout-date" name="workout-date" required>
+          </div>
+
+          <div class="exercise-type-container">
+            <label for="exercise-type">Choose Exercise:</label>
+            <select id="exercise-type">
+              <optgroup label="Cardio">
+                <option value="running">Running</option>
+                <option value="cycling">Cycling</option>
+                <option value="swimming">Swimming</option>
+              </optgroup>
+              <optgroup label="Chest">
+                <option value="benchpress">Bench Press</option>
+                <option value="inclinepress">Incline Press</option>
+                <option value="pushups">Push-Ups</option>
+                <option value="chestfly">Chest Fly</option>
+                <option value="cablecross">Cable Cross</option>
+                <option value="dumbbellpress">Dumbbell Press</option>
+                <option value="pecdeck">Pec Deck</option>
+              </optgroup>
+              <optgroup label="Back">
+                <option value="deadlift">Deadlift</option>
+                <option value="pullups">Pull-Ups</option>
+                <option value="latpulldown">Lat Pulldown</option>
+                <option value="barbellrow">Barbell Row</option>
+                <option value="dumbbellrow">Dumbbell Row</option>
+                <option value="tbarrow">T-Bar Row</option>
+                <option value="hyperextension">Hyperextension</option>
+              </optgroup>
+            </select>
+          </div>
+
+          <div class="input-container" id="time-input">
+            <label for="time">Workout Time (minutes):</label>
+            <input type="number" id="time" name="time" placeholder="Minutes">
+          </div>
+
+          <div class="input-container" id="reps-input">
+            <label for="reps">Reps per Set:</label>
+            <input type="number" id="reps" name="reps" placeholder="Number of Reps">
+          </div>
+
+          <div class="input-container" id="sets-input">
+            <label for="sets">Sets:</label>
+            <input type="number" id="sets" name="sets" placeholder="Number of Sets">
+          </div>
+
+          <div class="input-container">
+            <label for="weight">Weight (kg):</label>
+            <input type="number" id="weight" name="weight" placeholder="Weight (optional)">
+          </div>
+
+          <button id="log-workout" class="log-btn">Log Workout</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="console-box -log-console">
+      <div class="log-section">
+        <h2 class="log-title">Workout Log</h2>
+        <div class="input-container">
+            <label for="log-date">View Workouts for Date:</label>
+            <input type="date" id="log-date" name="log-date">
+            <button id="view-workouts" class="log-btn">View Workouts</button>
+        </div>        
+        <div id="workout-log" class="log-container"></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="workouttracker.js"></script>
+</body>
+<footer>
+  <div class="footerContainer">
+    <div class="socialIcons">
+      <a href="#"><i class="fa-brands fa-facebook"></i></a>
+      <a href="#"><i class="fa-brands fa-instagram"></i></a>
+      <a href="#"><i class="fa-brands fa-twitter"></i></a>
+      <a href="#"><i class="fa-brands fa-google-plus"></i></a>
+      <a href="#"><i class="fa-brands fa-youtube"></i></a>
+    </div>
+    <div class="footerNav">
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">News</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Contact Us</a></li>
+        <li><a href="#">Our Team</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footerBottom">
+    <p>Copyright &copy;2024; Designed by <span class="designer">PulseFit</span></p>
+  </div>
+</footer>
+</html>

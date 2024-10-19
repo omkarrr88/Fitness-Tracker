@@ -9,6 +9,7 @@ const authRoutes = require('./routes/authRoutes');
 const waterIntakeRoutes = require('./routes/waterIntakeRoutes');
 const profileRoutes = require('./routes/profileRoutes'); // Ensure this line is correct
 const sleepRoutes = require('./routes/sleepRoutes');
+const workoutRoutes = require('./routes/workoutRoutes'); // Add this line
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -29,6 +30,7 @@ app.use('/auth', authRoutes);
 app.use('/api', waterIntakeRoutes);
 app.use('/api', sleepRoutes);
 app.use('/api', profileRoutes); // Ensure this line is correct
+app.use('/api', workoutRoutes); // Add this line
 
 // Serve HTML files
 app.get('/', (req, res) => {
