@@ -34,7 +34,7 @@ app.use('/api', workoutRoutes); // Add this line
 
 // Serve HTML files
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, '../public', 'main.html'));
+    res.sendFile(path.join(__dirname, '../public', 'index.html'));
 });
 
 app.get('/account', (req, res) => {
