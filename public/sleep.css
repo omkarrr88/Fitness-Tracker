@@ -218,3 +218,14 @@ footer{
     font-weight: 400;
     margin: 0px 5px;
 }
+
+.hover-content p a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.logo h1 a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+}

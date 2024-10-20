@@ -14,8 +14,19 @@ body {
     color: #fff;
 }
 
+.logo h1 a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
 .logo h1 {
     margin: 0;
+}
+
+.hover-content p a {
+    color: #fff;
+    text-decoration: none;
 }
 
 .nav ul {

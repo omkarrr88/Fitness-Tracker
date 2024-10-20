@@ -30,6 +30,12 @@ body {
     margin: 0 15px;
 }
 
+.logo h1 a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
 .nav ul li a {
     color: #fff;
     text-decoration: none;
@@ -43,6 +49,11 @@ body {
 .profile-section {
     position: relative;
     margin-right: 40px; /* Adjust this value to move the profile icon to the left */
+}
+
+.hover-content p a {
+    color: #fff;
+    text-decoration: none;
 }
 
 .profile-icon {

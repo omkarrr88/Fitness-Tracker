@@ -114,9 +114,20 @@ body {
     gap: 10px;
 }
 
+.logo h1 a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
 .input-container {
     display: flex;
     flex-direction: column;
+}
+
+.hover-content p a {
+    color: #fff;
+    text-decoration: none;
 }
 
 .input-container label {

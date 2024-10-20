@@ -14,6 +14,17 @@ body {
     color: #fff;
 }
 
+.logo h1 a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.hover-content p a {
+    color: #fff;
+    text-decoration: none;
+}
+
 .logo h1 {
     margin: 0;
 }
