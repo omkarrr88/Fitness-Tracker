@@ -4,6 +4,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const workoutDateInput = document.getElementById('workout-date');
     const logDateInput = document.getElementById('log-date');
     const viewWorkoutsButton = document.getElementById('view-workouts');
+    const caloriesChart = document.getElementById('caloriesChart').getContext('2d');
+
+    let chart;
 
     workoutDateInput.addEventListener('change', loadWorkouts);
     viewWorkoutsButton.addEventListener('click', loadWorkouts);
@@ -31,8 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
         .then(data => {
             if (data.success) {
                 alert('Workout logged successfully');
-                loadWorkouts(); // Refresh the workout log
-                location.reload(); // Refresh the page to clear inputs
+                location.reload(); // Refresh the page to update the graph
             } else {
                 alert(data.message);
             }
@@ -88,6 +90,8 @@ document.addEventListener('DOMContentLoaded', () => {
                         <button class="delete-btn" onclick="deleteWorkout('${workout._id}')">Delete</button>
                     </div>
                 `).join('');
+
+                updateChart(data.workouts);
             } else {
                 workoutLogContainer.innerHTML = '<p>No workouts logged for this date.</p>';
                 alert('No workout data available for the selected date.');
@@ -95,6 +99,46 @@ document.addEventListener('DOMContentLoaded', () => {
         })
         .catch(error => {
             console.error('Error loading workouts:', error);
+        });
+    }
+
+    function updateChart(workouts) {
+        const dailyCalories = {};
+
+        workouts.forEach(workout => {
+            const date = workout.date.split('T')[0]; // Extract date part
+            if (!dailyCalories[date]) {
+                dailyCalories[date] = 0;
+            }
+            dailyCalories[date] += workout.totalCalories;
+        });
+
+        const labels = Object.keys(dailyCalories);
+        const data = Object.values(dailyCalories);
+
+        if (chart) {
+            chart.destroy();
+        }
+
+        chart = new Chart(caloriesChart, {
+            type: 'bar',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: 'Calories Burned',
+                    data: data,
+                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
         });
     }
 

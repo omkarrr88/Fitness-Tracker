@@ -3,12 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Water Intake Tracker | PulseFit</title>
-    <link rel="stylesheet" href="water.css">
+    <title>Calorie Tracker</title>
+    <link rel="stylesheet" href="calorie.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh60/..." crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
+
     <header class="header">
         <div class="logo">
             <h1><a href="dashboard.html">PulseFit</a></h1>
@@ -49,53 +50,53 @@
             </div>
         </div>
     </header>
-
     <div class="container">
-        <h1>Water Intake Tracker</h1>
-        <div class="glass-container">
-            <div class="glass">
-                <div class="water" id="water"></div>
+        <h1>Calorie Tracker for Indian Foods</h1>
+        
+        <label for="food-type">Select Food Type:</label>
+        <select id="food-type" onchange="loadFoodItems()">
+            <option value="veg">Veg</option>
+            <option value="non-veg">Non-Veg</option>
+            <option value="jain">Jain</option>
+        </select>
+
+        <div id="food-items">
+            <!-- Food items will be loaded here based on selection -->
+        </div>
+
+        <label for="date">Select Date:</label>
+        <input type="date" id="date" required>
+
+        <label for="time">Select Time:</label>
+        <input type="time" id="time" required>
+
+        <button onclick="calculateCalories()">Calculate Total Calories</button>
+        <div id="total-calories"></div>
+    </div>
+        <footer>
+            <div class="footerContainer">
+                <div class="socialIcons">
+                    <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                    <a href="#"><i class="fa-brands fa-google-plus"></i></a>
+                    <a href="#"><i class="fa-brands fa-youtube"></i></a>
+                </div>
+                <div class="footerNav">
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">News</a></li>
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Our Team</a></li>
+                    </ul>
+                </div>
             </div>
-        </div>
-        <div class="intake-options">
-            <button onclick="addWater(250)">250 ml</button>
-            <button onclick="addWater(500)">500 ml</button>
-            <button onclick="addWater(1000)">1000 ml</button>
-        </div>
-        <div class="milestone">
-            <p>Daily Milestone: 3000 ml</p>
-            <p>Water Drunk Today: <span id="waterDrunk">0</span> ml</p>
-        </div>
-        <div class="graph-options">
-            <button onclick="loadWaterIntakeChart('7')">Past 7 Days</button>
-            <button onclick="loadWaterIntakeChart('30')">Past 30 Days</button>
-            <button onclick="loadWaterIntakeChart('365')">Past Year</button>
-        </div>
-        <canvas id="waterChart"></canvas>
-    </div>    
-    <footer>
-        <div class="footerContainer">
-            <div class="socialIcons">
-                <a href="#"><i class="fa-brands fa-facebook"></i></a>
-                <a href="#"><i class="fa-brands fa-instagram"></i></a>
-                <a href="#"><i class="fa-brands fa-twitter"></i></a>
-                <a href="#"><i class="fa-brands fa-google-plus"></i></a>
-                <a href="#"><i class="fa-brands fa-youtube"></i></a>
+            <div class="footerBottom">
+                <p>Copyright &copy;2024; Designed by <span class="designer">PluseFit</span></p>
             </div>
-            <div class="footerNav">
-                <ul>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">News</a></li>
-                    <li><a href="#">About</a></li>
-                    <li><a href="#">Contact Us</a></li>
-                    <li><a href="#">Our Team</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="footerBottom">
-            <p>Copyright &copy;2024; Designed by <span class="designer">PluseFit</span></p>
-        </div>
-    </footer>
-    <script src="water.js"></script>
+        </footer>
+
+    <script src="calorie.js"></script>
 </body>
 </html>

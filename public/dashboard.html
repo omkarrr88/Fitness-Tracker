@@ -3,19 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard | PulseFit</title>
+    <title>Fitness Tracker Dashboard</title>
     <link rel="stylesheet" href="dashboard.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh60/..." crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
-    <!-- Header Section -->
     <header class="header">
         <div class="logo">
             <h1><a href="dashboard.html">PulseFit</a></h1>
         </div>
         <nav class="nav">
             <ul>
-                <li><a href="#home">Calorie Tracking</a></li>
+                <li><a href="calorie.html">Calorie Tracking</a></li>
                 <li><a href="workouttracker.html">Workout Tracking</a></li>
                 <li><a href="sleep.html">Sleep Tracking</a></li>
                 <li class="hover-section">
@@ -49,12 +49,29 @@
             </div>
         </div>
     </header>
-    
-    <div>
-        <h1>Dashboard</h1>
-    </div>
 
-    <!-- Other content of your dashboard -->
+    <main>
+        <h1>Fitness Tracker Dashboard</h1>
+        <div class="dashboard-container">
+            <div class="dashboard-item">
+                <h2>Calorie Tracker</h2>
+                <canvas id="calorieChart"></canvas>
+            </div>
+            <div class="dashboard-item">
+                <h2>Workout Tracker</h2>
+                <canvas id="workoutChart"></canvas>
+            </div>
+            <div class="dashboard-item">
+                <h2>Sleep Tracker</h2>
+                <canvas id="sleepChart"></canvas>
+            </div>
+            <div class="dashboard-item">
+                <h2>Water Intake</h2>
+                <canvas id="waterIntakeChart"></canvas>
+            </div>
+        </div>
+    </main>
+
     <footer>
         <div class="footerContainer">
             <div class="socialIcons">
@@ -78,6 +95,7 @@
             <p>Copyright &copy;2024; Designed by <span class="designer">PluseFit</span></p>
         </div>
     </footer>
+
     <script src="dashboard.js"></script>
 </body>
 </html>
